@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <script src="script.js" defer></script>
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -76,6 +77,10 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGZH8HT"
   height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
+
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
+    Dark mode
+  </button>
   
   <!-- Navigation Menu-->
   <!-- Nav class 1 -->
@@ -97,6 +102,14 @@
         <a aria-label="Navigate to the Experience section" href="#experience"
           class="waves-effect waves-dark blue-text"><i
             class="mdi-action-trending-up small"></i><span>Experience</span></a>
+      </li>
+
+      <li class="bold">
+        <!--
+        ICONS:
+        -->
+        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark blue-text"><i
+            class="mdi-social-school small"></i><span>Projects</span></a>
       </li>
 
       <li class="bold">
@@ -175,6 +188,12 @@
           class="waves-effect waves-dark blue-text"><i
             class="mdi-action-trending-up small"></i><span>Experience</span></a>
       </li>
+
+      <li class="bold">
+        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark blue-text"><i
+            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
+      </li>
+
       <li class="bold">
         <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark blue-text"><i
             class="mdi-action-assessment small"></i><span>Skills</span></a>
@@ -439,6 +458,21 @@ samples under strict deadlines
       </div>
     </section>
 
+  <!-- Fourth Section: Projects -->
+  <section id="projects" class="section scrollspy">
+    <h3 class="page-title white-text blue">Projects</h3>
+
+    <div id="projects-container" class="row">
+      <!-- Projects will be inserted here by JavaScript -->
+    </div>
+
+    <div class="center-align">
+      <button id="load-more-btn" class="btn blue">
+        Load More
+      </button>
+    </div>
+  </section>
+
     <!-- Fifth Section: Skills -->
     <section id="skills" class="section scrollspy">
       <h3 class="page-title white-text blue">Skills</h3>
@@ -600,7 +634,7 @@ samples under strict deadlines
       </div>
     </section>
 
-    <!-- Fourth Section: Places Travelled -->
+    <!-- Sixth Section: Places Travelled -->
     <section id="places" class="section scrollspy">
       <h3 class="page-title white-text blue">Places Travelled</h3>
       <div>
@@ -659,6 +693,25 @@ samples under strict deadlines
   <!-- Materialize - Compiled and minified JavaScript-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
   <script>
+    const themeToggle = document.querySelector('#theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    function setTheme(theme) {
+      const darkModeEnabled = theme === 'dark';
+      document.body.classList.toggle('dark-mode', darkModeEnabled);
+      themeToggle.textContent = darkModeEnabled ? 'Light mode' : 'Dark mode';
+      themeToggle.setAttribute('aria-label', darkModeEnabled
+        ? 'Switch to light mode'
+        : 'Switch to dark mode');
+    }
+
+    setTheme(savedTheme || 'light');
+    themeToggle.addEventListener('click', function () {
+      const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+      localStorage.setItem('theme', nextTheme);
+      setTheme(nextTheme);
+    });
+
     // Materialize - Initializers
     $(document).ready(function () {
       $(".scrollspy").scrollSpy()

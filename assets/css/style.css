@@ -30,6 +30,15 @@
 
 @import url(https://fonts.googleapis.com/css?family=Poiret+One);
 
+:root {
+  --page-text: #333;
+  --page-background: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #fafafa;
+  --border: #ddd;
+  --link: #2563eb;
+}
+
 .social {
   margin: 0 auto;
   width: auto;
@@ -126,8 +135,27 @@
 /* body-color */
 
 body {
-  color: #333;
+  background: var(--page-background);
+  color: var(--page-text);
   font-size: 18px;
+}
+
+.theme-toggle {
+  background: #2563eb;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 14px;
+  position: fixed;
+  right: 24px;
+  top: 18px;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  background: #1d4ed8;
 }
 
 /* body {
@@ -142,7 +170,7 @@ body {
 } */
 
 a {
-  color: #2563EB;
+  color: var(--link);
 }
 
 /* main blockqoute */
@@ -177,7 +205,7 @@ blockquote * {
 /* main nav */
 
 nav {
-  background: white;
+  background: var(--surface);
   box-shadow: none;
   height: 0;
 }
@@ -260,8 +288,8 @@ ul.table-of-contents li.logo a:hover {
 } */
 
 ul.side-nav.fixed li.logo {
-  background-color: #fafafa;
-  border-bottom: 1px solid #ddd;
+  background-color: var(--surface-muted);
+  border-bottom: 1px solid var(--border);
   box-sizing: content-box;
   min-height: 90px;
   padding: 30px 30px 40px;
@@ -274,7 +302,7 @@ ul.side-nav.fixed li.logo a {
 
 ul.table-of-contents li:not(.logo) a.active,
 ul.table-of-contents li:not(.logo) a:hover {
-  background-color: #fafafa;
+  background-color: var(--surface-muted);
   border-left: 3px solid;
 }
 
@@ -325,7 +353,7 @@ h3 {
 } */
 
 #intro.section {
-  background: #ffffff repeat;
+  background: var(--surface) repeat;
   position: relative;
 }
 
@@ -486,7 +514,7 @@ a.hoverline:hover {
 }
 
 #skills h4 {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 30px;
   padding-bottom: 20px;
 }
@@ -507,7 +535,7 @@ a.hoverline:hover {
 }
 
 #experience .card-content .row {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
 }
 
